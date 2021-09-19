@@ -4,9 +4,9 @@ public class Main {
     public static void main(String[] args) {
         int[][] grid = {
             {0, 0, 0, 0, 0},
+            {0, 1, 0, 1, 0},
             {0, 0, 1, 0, 0},
-            {0, 0, 1, 0, 0},
-            {0, 0, 1, 0, 0},
+            {0, 1, 1, 1, 0},
             {0, 0, 0, 0, 0}
         };
 
@@ -21,7 +21,7 @@ public class Main {
         int rowCount = grid.length - 1;
         int columnCount = grid[0].length - 1;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 2; i++) {
             for (int row = 0; row <= rowCount; row++) {
                 for (int column = 0; column <= columnCount; column++) {
                     int neighborCount = 0;
@@ -59,9 +59,9 @@ public class Main {
                     }
 
                     if (resultGrid[row][column] == 0) {
-                        System.out.print("-");
+                        System.out.print("▒ ");
                     } else {
-                        System.out.print("+");
+                        System.out.print("▓ ");
                     }
                 }
                 System.out.println("");
