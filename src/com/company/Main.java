@@ -41,20 +41,19 @@ public class Main {
                     neighborCount++;
                 }
 
-                String status = "Stays";
-                if (neighborCount == 0 || neighborCount == 1) {
-                    status = "Died";
-                }
-
-                if (neighborCount >= 4) {
-                    status = "Died";
-                }
+//                if (neighborCount == 0 || neighborCount == 1) {
+//                    // grid[row][column] = 0;
+//                }
+//
+//                if (neighborCount >= 4) {
+//                    // grid[row][column] = 0;
+//                }
 
                 if (neighborCount == 3) {
-                    status = "Alive";
+                    grid[row][column] = 1;
                 }
 
-                System.out.print(neighborCount + "(" + status + ")" + " ");
+                System.out.print(grid[row][column] + " ");
             }
             System.out.println();
         }
