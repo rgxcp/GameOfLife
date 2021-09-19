@@ -18,16 +18,18 @@ public class Main {
             {0, 0, 0, 0, 0}
         };
 
-        int rowCount = grid.length - 1;
-        int columnCount = grid[0].length - 1;
+        final int rowCount = grid.length - 1;
+        final int columnCount = grid[0].length - 1;
+
+        printFirstResult(grid);
 
         for (int i = 0; i < 3; i++) {
-            for (int row = 0; row <= rowCount; row++) {
-                for (int column = 0; column <= columnCount; column++) {
-                    System.out.print(grid[row][column]);
+            for (int row = 0; row < grid.length; row++) {
+                for (int column = 0; column < grid[row].length; column++) {
+//                    System.out.print(grid[row][column]);
                     int neighborCount = countNeighbor(row, column, rowCount, columnCount, grid);
                     resultGrid[row][column] = determineCell(neighborCount, grid[row][column]);
-//                    printCell(resultGrid[row][column]);
+                    printCell(resultGrid[row][column]);
                 }
                 System.out.println();
             }
@@ -131,5 +133,15 @@ public class Main {
         } else {
             System.out.print("▓ ");
         }
+    }
+
+    public static void printFirstResult(int[][] grid) {
+        for (int[] rows : grid) {
+            for (int columns : rows) {
+                printCell(columns);
+            }
+            System.out.println();
+        }
+        System.out.println();
     }
 }
