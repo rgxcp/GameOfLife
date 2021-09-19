@@ -26,12 +26,7 @@ public class Main {
                 for (int column = 0; column <= columnCount; column++) {
                     int neighborCount = countNeighbor(row, column, rowCount, columnCount, grid);
                     resultGrid[row][column] = determineCell(neighborCount, grid[row][column]);
-
-                    if (resultGrid[row][column] == 0) {
-                        System.out.print("▒ ");
-                    } else {
-                        System.out.print("▓ ");
-                    }
+                    printCell(resultGrid[row][column]);
                 }
                 System.out.println("");
             }
@@ -126,6 +121,14 @@ public class Main {
             return 1;
         } else {
             return defaultCell;
+        }
+    }
+
+    public static void printCell(int cell) {
+        if (cell == 0) {
+            System.out.print("▒ ");
+        } else {
+            System.out.print("▓ ");
         }
     }
 }
