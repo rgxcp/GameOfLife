@@ -43,4 +43,21 @@ public class Grid {
     public int getColumnCount() {
         return grid[0].length - 1;
     }
+
+    public boolean containLivingCell() {
+        boolean contain = false;
+        for (int[] rows : grid) {
+            if (contain) {
+                break;
+            }
+
+            for (int columns : rows) {
+                if (columns == 1) {
+                    contain = true;
+                    break;
+                }
+            }
+        }
+        return contain;
+    }
 }

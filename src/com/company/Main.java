@@ -15,7 +15,7 @@ public class Main {
         Grid grid = new Grid(initialGrid);
         grid.printGrid();
 
-        while (gridContainLivingCell(grid.getGrid())) {
+        while (grid.containLivingCell()) {
             int[][] resultGrid = {
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0},
@@ -126,24 +126,5 @@ public class Main {
         } else {
             return defaultCell;
         }
-    }
-
-    public static boolean gridContainLivingCell(int[][] grid) {
-        boolean contain = false;
-
-        for (int[] rows : grid) {
-            if (contain) {
-                break;
-            }
-
-            for (int columns : rows) {
-                if (columns == 1) {
-                    contain = true;
-                    break;
-                }
-            }
-        }
-
-        return contain;
     }
 }
