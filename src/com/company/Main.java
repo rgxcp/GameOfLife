@@ -4,7 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        int[][] grid = {
+        int[][] initialGrid = {
             {0, 0, 1, 0, 0},
             {0, 0, 1, 0, 0},
             {0, 0, 1, 0, 0},
@@ -12,13 +12,10 @@ public class Main {
             {0, 0, 1, 0, 0}
         };
 
-        printInitialGrid(grid);
-        TimeUnit.SECONDS.sleep(1);
+        Grid grid = new Grid(initialGrid);
+        grid.printGrid();
 
-        final int rowCount = grid.length - 1;
-        final int columnCount = grid[0].length - 1;
-
-        while (gridContainLivingCell(grid)) {
+        while (gridContainLivingCell(grid.getGrid())) {
             int[][] resultGrid = {
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0},
@@ -27,16 +24,16 @@ public class Main {
                 {0, 0, 0, 0, 0}
             };
 
-            for (int row = 0; row < grid.length; row++) {
-                for (int column = 0; column < grid[row].length; column++) {
-                    int neighborCount = countNeighbor(row, column, rowCount, columnCount, grid);
-                    resultGrid[row][column] = determineCell(neighborCount, grid[row][column]);
-                    printCell(resultGrid[row][column]);
+            for (int row = 0; row <= grid.getRowCount(); row++) {
+                for (int column = 0; column <= grid.getColumnCount(); column++) {
+                    int neighborCount = countNeighbor(row, column, grid.getRowCount(), grid.getColumnCount(), grid.getGrid());
+                    resultGrid[row][column] = determineCell(neighborCount, grid.getGrid()[row][column]);
+                    grid.printCell(resultGrid[row][column]);
                 }
                 System.out.println();
             }
             System.out.println();
-            grid = resultGrid;
+            grid.setGrid(resultGrid);
 
             TimeUnit.SECONDS.sleep(1);
         }
@@ -129,24 +126,6 @@ public class Main {
         } else {
             return defaultCell;
         }
-    }
-
-    public static void printCell(int cell) {
-        if (cell == 0) {
-            System.out.print("▒ ");
-        } else {
-            System.out.print("▓ ");
-        }
-    }
-
-    public static void printInitialGrid(int[][] grid) {
-        for (int[] rows : grid) {
-            for (int columns : rows) {
-                printCell(columns);
-            }
-            System.out.println();
-        }
-        System.out.println();
     }
 
     public static boolean gridContainLivingCell(int[][] grid) {
