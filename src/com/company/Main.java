@@ -40,7 +40,16 @@ public class Main {
                 if (cellHasBottomRightNeighbor(row, column, rowCount, columnCount) && neighborCellIsAlive(grid[row + 1][column + 1])) {
                     neighborCount++;
                 }
-                System.out.print(neighborCount + " ");
+
+//                if (neighborCount == 0 || neighborCount == 1 || neighborCount >= 4) {
+//                    grid[row][column] = 0;
+//                }
+
+//                if (neighborCount == 3) {
+//                    grid[row][column] = 1;
+//                }
+
+                System.out.print(neighborCount);
             }
             System.out.println();
         }
