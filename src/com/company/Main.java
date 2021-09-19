@@ -10,23 +10,22 @@ public class Main {
             {0, 0, 1, 0, 0}
         };
 
-        int[][] resultGrid = {
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0}
-        };
-
         printInitialGrid(grid);
 
         final int rowCount = grid.length - 1;
         final int columnCount = grid[0].length - 1;
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 5; i++) {
+            int[][] resultGrid = {
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0},
+                {0, 0, 0, 0, 0}
+            };
+
             for (int row = 0; row < grid.length; row++) {
                 for (int column = 0; column < grid[row].length; column++) {
-//                    System.out.print(grid[row][column]);
                     int neighborCount = countNeighbor(row, column, rowCount, columnCount, grid);
                     resultGrid[row][column] = determineCell(neighborCount, grid[row][column]);
                     printCell(resultGrid[row][column]);
