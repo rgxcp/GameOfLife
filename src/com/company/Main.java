@@ -14,28 +14,28 @@ public class Main {
             for (int column = 0; column < grid.length; column++) {
                 System.out.println("Cell: " + grid[row][column]);
                 int neighborCount = 0;
-                if (isCellHasTopLeftNeighbor(row, column) && grid[row - 1][column - 1] == 1) {
+                if (isCellHasTopLeftNeighbor(row, column) && cellIsAlive(grid[row - 1][column - 1])) {
                     neighborCount++;
                 }
-                if (isCellHasTopNeighbor(row) && grid[row - 1][column] == 1) {
+                if (isCellHasTopNeighbor(row) && cellIsAlive(grid[row - 1][column])) {
                     neighborCount++;
                 }
-                if (isCellHasTopRightNeighbor(row, column, grid.length) && grid[row - 1][column + 1] == 1) {
+                if (isCellHasTopRightNeighbor(row, column, grid.length) && cellIsAlive(grid[row - 1][column + 1])) {
                     neighborCount++;
                 }
-                if (isCellHasLeftNeighbor(column) && grid[1][column - 1] == 1) {
+                if (isCellHasLeftNeighbor(column) && cellIsAlive(grid[1][column - 1])) {
                     neighborCount++;
                 }
-                if (isCellHasRightNeighbor(column, grid.length) && grid[row][column + 1] == 1) {
+                if (isCellHasRightNeighbor(column, grid.length) && cellIsAlive(grid[row][column + 1])) {
                     neighborCount++;
                 }
-                if (isCellHasBottomLeftNeighbor(row, column, grid.length) && grid[row + 1][column - 1] == 1) {
+                if (isCellHasBottomLeftNeighbor(row, column, grid.length) && cellIsAlive(grid[row + 1][column - 1])) {
                     neighborCount++;
                 }
-                if (isCellHasBottomNeighbor(row, grid.length) && grid[row + 1][column] == 1) {
+                if (isCellHasBottomNeighbor(row, grid.length) && cellIsAlive(grid[row + 1][column])) {
                     neighborCount++;
                 }
-                if (isCellHasBottomRightNeighbor(row, column, grid.length) && grid[row + 1][column + 1] == 1) {
+                if (isCellHasBottomRightNeighbor(row, column, grid.length) && cellIsAlive(grid[row + 1][column + 1])) {
                     neighborCount++;
                 }
                 System.out.println("Neighbor Count: " + neighborCount);
@@ -86,5 +86,9 @@ public class Main {
         int cellBottomRightNeighborRow = row + 1;
         int cellBottomRightNeighborColumn = column + 1;
         return !(cellBottomRightNeighborRow >= size) && !(cellBottomRightNeighborColumn >= size);
+    }
+
+    public static boolean cellIsAlive(int cellNumber) {
+        return cellNumber == 1;
     }
 }
