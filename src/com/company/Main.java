@@ -65,6 +65,14 @@ public class Main {
                     cellHasBottomNeighbor = true;
                 }
                 System.out.println("Cell has bottom neighbor: " + cellHasBottomNeighbor);
+
+                boolean cellHasBottomRightNeighbor = false;
+                int cellBottomRightNeighborRow = row + 1;
+                int cellBottomRightNeighborColumn = column + 1;
+                if (!(cellBottomRightNeighborRow >= grid.length) && !(cellBottomRightNeighborColumn >= grid.length)) {
+                    cellHasBottomRightNeighbor = true;
+                }
+                System.out.println("Cell has bottom right neighbor: " + cellHasBottomRightNeighbor);
             }
             System.out.println();
         }
