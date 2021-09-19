@@ -21,7 +21,7 @@ public class Main {
         final int rowCount = grid.length - 1;
         final int columnCount = grid[0].length - 1;
 
-        printFirstResult(grid);
+        printInitialGrid(grid);
 
         for (int i = 0; i < 3; i++) {
             for (int row = 0; row < grid.length; row++) {
@@ -135,7 +135,7 @@ public class Main {
         }
     }
 
-    public static void printFirstResult(int[][] grid) {
+    public static void printInitialGrid(int[][] grid) {
         for (int[] rows : grid) {
             for (int columns : rows) {
                 printCell(columns);
