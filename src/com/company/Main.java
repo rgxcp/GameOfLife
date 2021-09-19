@@ -4,39 +4,41 @@ public class Main {
     public static void main(String[] args) {
         int[][] grid = {
             {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0},
-            {0, 0, 0, 0, 0},
+            {0, 0, 1, 0, 0},
+            {0, 0, 1, 0, 0},
+            {0, 0, 1, 0, 0},
             {0, 0, 0, 0, 0}
         };
 
         for (int row = 0; row < grid.length; row++) {
             for (int column = 0; column < grid.length; column++) {
-                System.out.println(grid[row][column]);
-
-                boolean cellHasTopLeftNeighbor = isCellHasTopLeftNeighbor(row, column);
-                System.out.println("Cell has top left neighbor: " + cellHasTopLeftNeighbor);
-
-                boolean cellHasTopNeighbor = isCellHasTopNeighbor(row);
-                System.out.println("Cell has top neighbor: " + cellHasTopNeighbor);
-
-                boolean cellHasTopRightNeighbor = isCellHasTopRightNeighbor(row, column, grid[column].length);
-                System.out.println("Cell has top right neighbor: " + cellHasTopRightNeighbor);
-
-                boolean cellHasLeftNeighbor = isCellHasLeftNeighbor(column);
-                System.out.println("Cell has left neighbor: " + cellHasLeftNeighbor);
-
-                boolean cellHasRightNeighbor = isCellHasRightNeighbor(column, grid[column].length);
-                System.out.println("Cell has right neighbor: " + cellHasRightNeighbor);
-
-                boolean cellHasBottomLeftNeighbor = isCellHasBottomLeftNeighbor(row, column, grid.length);
-                System.out.println("Cell has bottom left neighbor: " + cellHasBottomLeftNeighbor);
-
-                boolean cellHasBottomNeighbor = isCellHasBottomNeighbor(row, grid.length);
-                System.out.println("Cell has bottom neighbor: " + cellHasBottomNeighbor);
-
-                boolean cellHasBottomRightNeighbor = isCellHasBottomRightNeighbor(row, column, grid.length);
-                System.out.println("Cell has bottom right neighbor: " + cellHasBottomRightNeighbor);
+                System.out.println("Cell: " + grid[row][column]);
+                int neighborCount = 0;
+                if (isCellHasTopLeftNeighbor(row, column) && grid[row - 1][column - 1] == 1) {
+                    neighborCount++;
+                }
+                if (isCellHasTopNeighbor(row) && grid[row - 1][column] == 1) {
+                    neighborCount++;
+                }
+                if (isCellHasTopRightNeighbor(row, column, grid.length) && grid[row - 1][column + 1] == 1) {
+                    neighborCount++;
+                }
+                if (isCellHasLeftNeighbor(column) && grid[1][column - 1] == 1) {
+                    neighborCount++;
+                }
+                if (isCellHasRightNeighbor(column, grid.length) && grid[row][column + 1] == 1) {
+                    neighborCount++;
+                }
+                if (isCellHasBottomLeftNeighbor(row, column, grid.length) && grid[row + 1][column - 1] == 1) {
+                    neighborCount++;
+                }
+                if (isCellHasBottomNeighbor(row, grid.length) && grid[row + 1][column] == 1) {
+                    neighborCount++;
+                }
+                if (isCellHasBottomRightNeighbor(row, column, grid.length) && grid[row + 1][column + 1] == 1) {
+                    neighborCount++;
+                }
+                System.out.println("Neighbor Count: " + neighborCount);
             }
             System.out.println();
         }
