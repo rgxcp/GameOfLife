@@ -1,7 +1,9 @@
 package com.company;
 
+import java.util.concurrent.TimeUnit;
+
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         int[][] grid = {
             {0, 0, 1, 0, 0},
             {0, 0, 1, 0, 0},
@@ -11,6 +13,7 @@ public class Main {
         };
 
         printInitialGrid(grid);
+        TimeUnit.SECONDS.sleep(1);
 
         final int rowCount = grid.length - 1;
         final int columnCount = grid[0].length - 1;
@@ -34,6 +37,8 @@ public class Main {
             }
             System.out.println();
             grid = resultGrid;
+
+            TimeUnit.SECONDS.sleep(1);
         }
     }
 
