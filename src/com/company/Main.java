@@ -15,7 +15,7 @@ public class Main {
         final int rowCount = grid.length - 1;
         final int columnCount = grid[0].length - 1;
 
-        for (int i = 0; i < 5; i++) {
+        while (gridContainLivingCell(grid)) {
             int[][] resultGrid = {
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0},
@@ -142,5 +142,24 @@ public class Main {
             System.out.println();
         }
         System.out.println();
+    }
+
+    public static boolean gridContainLivingCell(int[][] grid) {
+        boolean contain = false;
+
+        for (int[] rows : grid) {
+            if (contain) {
+                break;
+            }
+
+            for (int columns : rows) {
+                if (columns == 1) {
+                    contain = true;
+                    break;
+                }
+            }
+        }
+
+        return contain;
     }
 }
