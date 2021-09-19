@@ -58,7 +58,11 @@ public class Main {
                         resultGrid[row][column] = grid[row][column];
                     }
 
-                    System.out.print(resultGrid[row][column] + " ");
+                    if (resultGrid[row][column] == 0) {
+                        System.out.print("-");
+                    } else {
+                        System.out.print("+");
+                    }
                 }
                 System.out.println("");
             }
