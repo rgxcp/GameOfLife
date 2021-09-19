@@ -20,12 +20,7 @@ public class Main {
                 boolean cellHasTopNeighbor = isCellHasTopNeighbor(row);
                 System.out.println("Cell has top neighbor: " + cellHasTopNeighbor);
 
-                boolean cellHasTopRightNeighbor = false;
-                int cellTopRightNeighborRow = row - 1;
-                int cellTopRightNeighborColumn = column + 1;
-                if (cellTopRightNeighborRow >= 0 && !(cellTopRightNeighborColumn >= grid[column].length)) {
-                    cellHasTopRightNeighbor = true;
-                }
+                boolean cellHasTopRightNeighbor = isCellHasTopRightNeighbor(row, column, grid[column].length);
                 System.out.println("Cell has top right neighbor: " + cellHasTopRightNeighbor);
 
                 boolean cellHasLeftNeighbor = false;
@@ -78,5 +73,11 @@ public class Main {
     public static boolean isCellHasTopNeighbor(int row) {
         int cellTopNeighborRow = row - 1;
         return cellTopNeighborRow >= 0;
+    }
+
+    public static boolean isCellHasTopRightNeighbor(int row, int column, int size) {
+        int cellTopRightNeighborRow = row - 1;
+        int cellTopRightNeighborColumn = column + 1;
+        return (cellTopRightNeighborRow >= 0 && !(cellTopRightNeighborColumn >= size));
     }
 }
