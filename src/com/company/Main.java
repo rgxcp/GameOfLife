@@ -50,6 +50,14 @@ public class Main {
                     cellHasRightNeighbor = true;
                 }
                 System.out.println("Cell has right neighbor: " + cellHasRightNeighbor);
+
+                boolean cellHasBottomLeftNeighbor = false;
+                int cellBottomLeftNeighborRow = row + 1;
+                int cellBottomLeftNeighborColumn = column - 1;
+                if (!(cellBottomLeftNeighborRow >= grid.length) && cellBottomLeftNeighborColumn >= 0) {
+                    cellHasBottomLeftNeighbor = true;
+                }
+                System.out.println("Cell has bottom left neighbor: " + cellHasBottomLeftNeighbor);
             }
             System.out.println();
         }
