@@ -18,10 +18,10 @@ public class Main {
             {0, 0, 0, 0, 0}
         };
 
+        printInitialGrid(grid);
+
         final int rowCount = grid.length - 1;
         final int columnCount = grid[0].length - 1;
-
-        printInitialGrid(grid);
 
         for (int i = 0; i < 3; i++) {
             for (int row = 0; row < grid.length; row++) {
