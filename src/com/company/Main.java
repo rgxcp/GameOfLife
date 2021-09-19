@@ -15,7 +15,6 @@ public class Main {
 
         for (int row = 0; row < grid.length; row++) {
             for (int column = 0; column < grid.length; column++) {
-                System.out.println("Cell: " + grid[row][column]);
                 int neighborCount = 0;
                 if (cellHasTopLeftNeighbor(row, column) && neighborCellIsAlive(grid[row - 1][column - 1])) {
                     neighborCount++;
@@ -26,7 +25,7 @@ public class Main {
                 if (cellHasTopRightNeighbor(row, column, columnCount) && neighborCellIsAlive(grid[row - 1][column + 1])) {
                     neighborCount++;
                 }
-                if (cellHasLeftNeighbor(column) && neighborCellIsAlive(grid[1][column - 1])) {
+                if (cellHasLeftNeighbor(column) && neighborCellIsAlive(grid[row][column - 1])) {
                     neighborCount++;
                 }
                 if (cellHasRightNeighbor(column, columnCount) && neighborCellIsAlive(grid[row][column + 1])) {
@@ -41,7 +40,7 @@ public class Main {
                 if (cellHasBottomRightNeighbor(row, column, rowCount, columnCount) && neighborCellIsAlive(grid[row + 1][column + 1])) {
                     neighborCount++;
                 }
-                System.out.println("Neighbor Count: " + neighborCount);
+                System.out.print(neighborCount + " ");
             }
             System.out.println();
         }
