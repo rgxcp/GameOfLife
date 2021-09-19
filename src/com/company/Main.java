@@ -24,31 +24,7 @@ public class Main {
         for (int i = 0; i < 2; i++) {
             for (int row = 0; row <= rowCount; row++) {
                 for (int column = 0; column <= columnCount; column++) {
-                    int neighborCount = 0;
-                    if (cellHasTopLeftNeighbor(row, column) && neighborCellIsAlive(grid[row - 1][column - 1])) {
-                        neighborCount++;
-                    }
-                    if (cellHasTopNeighbor(row) && neighborCellIsAlive(grid[row - 1][column])) {
-                        neighborCount++;
-                    }
-                    if (cellHasTopRightNeighbor(row, column, columnCount) && neighborCellIsAlive(grid[row - 1][column + 1])) {
-                        neighborCount++;
-                    }
-                    if (cellHasLeftNeighbor(column) && neighborCellIsAlive(grid[row][column - 1])) {
-                        neighborCount++;
-                    }
-                    if (cellHasRightNeighbor(column, columnCount) && neighborCellIsAlive(grid[row][column + 1])) {
-                        neighborCount++;
-                    }
-                    if (cellHasBottomLeftNeighbor(row, column, rowCount) && neighborCellIsAlive(grid[row + 1][column - 1])) {
-                        neighborCount++;
-                    }
-                    if (cellHasBottomNeighbor(row, rowCount) && neighborCellIsAlive(grid[row + 1][column])) {
-                        neighborCount++;
-                    }
-                    if (cellHasBottomRightNeighbor(row, column, rowCount, columnCount) && neighborCellIsAlive(grid[row + 1][column + 1])) {
-                        neighborCount++;
-                    }
+                    int neighborCount = countNeighbor(row, column, rowCount, columnCount, grid);
 
                     if (neighborCount == 0 || neighborCount == 1 || neighborCount >= 4) {
                         resultGrid[row][column] = 0;
@@ -117,5 +93,36 @@ public class Main {
 
     public static boolean neighborCellIsAlive(int cell) {
         return cell == 1;
+    }
+
+    public static int countNeighbor(int row, int column, int rowCount, int columnCount, int[][] grid) {
+        int count = 0;
+
+        if (cellHasTopLeftNeighbor(row, column) && neighborCellIsAlive(grid[row - 1][column - 1])) {
+            count++;
+        }
+        if (cellHasTopNeighbor(row) && neighborCellIsAlive(grid[row - 1][column])) {
+            count++;
+        }
+        if (cellHasTopRightNeighbor(row, column, columnCount) && neighborCellIsAlive(grid[row - 1][column + 1])) {
+            count++;
+        }
+        if (cellHasLeftNeighbor(column) && neighborCellIsAlive(grid[row][column - 1])) {
+            count++;
+        }
+        if (cellHasRightNeighbor(column, columnCount) && neighborCellIsAlive(grid[row][column + 1])) {
+            count++;
+        }
+        if (cellHasBottomLeftNeighbor(row, column, rowCount) && neighborCellIsAlive(grid[row + 1][column - 1])) {
+            count++;
+        }
+        if (cellHasBottomNeighbor(row, rowCount) && neighborCellIsAlive(grid[row + 1][column])) {
+            count++;
+        }
+        if (cellHasBottomRightNeighbor(row, column, rowCount, columnCount) && neighborCellIsAlive(grid[row + 1][column + 1])) {
+            count++;
+        }
+
+        return count;
     }
 }
