@@ -58,6 +58,13 @@ public class Main {
                     cellHasBottomLeftNeighbor = true;
                 }
                 System.out.println("Cell has bottom left neighbor: " + cellHasBottomLeftNeighbor);
+
+                boolean cellHasBottomNeighbor = false;
+                int cellBottomNeighborRow = row + 1;
+                if (!(cellBottomNeighborRow >= grid.length)) {
+                    cellHasBottomNeighbor = true;
+                }
+                System.out.println("Cell has bottom neighbor: " + cellHasBottomNeighbor);
             }
             System.out.println();
         }
