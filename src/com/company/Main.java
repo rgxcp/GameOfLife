@@ -82,13 +82,13 @@ public class Main {
         return !(cellBottomNeighborRow >= size);
     }
 
-    public static boolean cellHasBottomRightNeighbor(int row, int column, int size) {
-        int cellBottomRightNeighborRow = row + 1;
-        int cellBottomRightNeighborColumn = column + 1;
-        return !(cellBottomRightNeighborRow >= size) && !(cellBottomRightNeighborColumn >= size);
+    public static boolean cellHasBottomRightNeighbor(int row, int column, int gridSize) {
+        int neighborRow = row + 1; // 5
+        int neighborColumn = column + 1; // 4
+        return !(neighborRow > gridSize) && !(neighborColumn > gridSize);
     }
 
-    public static boolean neighborCellIsAlive(int cellNumber) {
-        return cellNumber == 1;
+    public static boolean neighborCellIsAlive(int cell) {
+        return cell == 1;
     }
 }
