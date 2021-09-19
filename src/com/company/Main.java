@@ -32,7 +32,7 @@ public class Main {
                 boolean cellHasTopRightNeighbor = false;
                 int cellTopRightNeighborRow = row - 1;
                 int cellTopRightNeighborColumn = column + 1;
-                if (cellTopRightNeighborRow >= 0 && !(cellTopRightNeighborColumn >= grid[column].length - 1)) {
+                if (cellTopRightNeighborRow >= 0 && !(cellTopRightNeighborColumn >= grid[column].length)) {
                     cellHasTopRightNeighbor = true;
                 }
                 System.out.println("Cell has top right neighbor: " + cellHasTopRightNeighbor);
@@ -43,6 +43,13 @@ public class Main {
                     cellHasLeftNeighbor = true;
                 }
                 System.out.println("Cell has left neighbor: " + cellHasLeftNeighbor);
+
+                boolean cellHasRightNeighbor = false;
+                int cellRightNeighborColumn = column + 1;
+                if (!(cellRightNeighborColumn >= grid[column].length)) {
+                    cellHasRightNeighbor = true;
+                }
+                System.out.println("Cell has right neighbor: " + cellHasRightNeighbor);
             }
             System.out.println();
         }
