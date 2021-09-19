@@ -14,12 +14,7 @@ public class Main {
             for (int column = 0; column < grid.length; column++) {
                 System.out.println(grid[row][column]);
 
-                boolean cellHasTopLeftNeighbor = false;
-                int cellTopLeftNeighborRow = row - 1;
-                int cellTopLeftNeighborColumn = column - 1;
-                if (cellTopLeftNeighborRow >= 0 && cellTopLeftNeighborColumn >= 0) {
-                    cellHasTopLeftNeighbor = true;
-                }
+                boolean cellHasTopLeftNeighbor = isCellHasTopLeftNeighbor(row, column);
                 System.out.println("Cell has top left neighbor: " + cellHasTopLeftNeighbor);
 
                 boolean cellHasTopNeighbor = false;
@@ -76,5 +71,11 @@ public class Main {
             }
             System.out.println();
         }
+    }
+
+    public static boolean isCellHasTopLeftNeighbor(int row, int column) {
+        int cellTopLeftNeighborRow = row - 1;
+        int cellTopLeftNeighborColumn = column - 1;
+        return cellTopLeftNeighborRow >= 0 && cellTopLeftNeighborColumn >= 0;
     }
 }
