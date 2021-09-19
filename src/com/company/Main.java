@@ -28,6 +28,14 @@ public class Main {
                     cellHasTopNeighbor = true;
                 }
                 System.out.println("Cell has top neighbor: " + cellHasTopNeighbor);
+
+                boolean cellHasTopRightNeighbor = false;
+                int cellTopRightNeighborRow = row - 1;
+                int cellTopRightNeighborColumn = column + 1;
+                if (cellTopRightNeighborRow >= 0 && !(cellTopRightNeighborColumn >= grid[column].length - 1)) {
+                    cellHasTopRightNeighbor = true;
+                }
+                System.out.println("Cell has top right neighbor: " + cellHasTopRightNeighbor);
             }
             System.out.println();
         }
