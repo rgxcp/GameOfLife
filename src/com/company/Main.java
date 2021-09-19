@@ -20,19 +20,19 @@ public class Main {
                 if (cellHasTopNeighbor(row) && neighborCellIsAlive(grid[row - 1][column])) {
                     neighborCount++;
                 }
-                if (cellHasTopRightNeighbor(row, column, grid.length) && neighborCellIsAlive(grid[row - 1][column + 1])) {
+                if (cellHasTopRightNeighbor(row, column, grid.length - 1) && neighborCellIsAlive(grid[row - 1][column + 1])) {
                     neighborCount++;
                 }
                 if (cellHasLeftNeighbor(column) && neighborCellIsAlive(grid[1][column - 1])) {
                     neighborCount++;
                 }
-                if (cellHasRightNeighbor(column, grid.length) && neighborCellIsAlive(grid[row][column + 1])) {
+                if (cellHasRightNeighbor(column, grid.length - 1) && neighborCellIsAlive(grid[row][column + 1])) {
                     neighborCount++;
                 }
-                if (cellHasBottomLeftNeighbor(row, column, grid.length) && neighborCellIsAlive(grid[row + 1][column - 1])) {
+                if (cellHasBottomLeftNeighbor(row, column, grid.length - 1) && neighborCellIsAlive(grid[row + 1][column - 1])) {
                     neighborCount++;
                 }
-                if (cellHasBottomNeighbor(row, grid.length) && neighborCellIsAlive(grid[row + 1][column])) {
+                if (cellHasBottomNeighbor(row, grid.length - 1) && neighborCellIsAlive(grid[row + 1][column])) {
                     neighborCount++;
                 }
                 if (cellHasBottomRightNeighbor(row, column, grid.length - 1, grid[row].length - 1) && neighborCellIsAlive(grid[row + 1][column + 1])) {
@@ -71,15 +71,15 @@ public class Main {
         return !(cellRightNeighborColumn >= size);
     }
 
-    public static boolean cellHasBottomLeftNeighbor(int row, int column, int size) {
-        int cellBottomLeftNeighborRow = row + 1;
-        int cellBottomLeftNeighborColumn = column - 1;
-        return (!(cellBottomLeftNeighborRow >= size) && cellBottomLeftNeighborColumn >= 0);
+    public static boolean cellHasBottomLeftNeighbor(int row, int column, int rowCount) {
+        int neighborRow = row + 1;
+        int neighborColumn = column - 1;
+        return neighborRow <= rowCount && neighborColumn >= 0;
     }
 
-    public static boolean cellHasBottomNeighbor(int row, int size) {
-        int cellBottomNeighborRow = row + 1;
-        return !(cellBottomNeighborRow >= size);
+    public static boolean cellHasBottomNeighbor(int row, int rowCount) {
+        int neighborRow = row + 1;
+        return neighborRow <= rowCount;
     }
 
     public static boolean cellHasBottomRightNeighbor(int row, int column, int rowCount, int columnCount) {
