@@ -36,6 +36,13 @@ public class Main {
                     cellHasTopRightNeighbor = true;
                 }
                 System.out.println("Cell has top right neighbor: " + cellHasTopRightNeighbor);
+
+                boolean cellHasLeftNeighbor = false;
+                int cellLeftNeighborColumn = column - 1;
+                if (cellLeftNeighborColumn >= 0) {
+                    cellHasLeftNeighbor = true;
+                }
+                System.out.println("Cell has left neighbor: " + cellHasLeftNeighbor);
             }
             System.out.println();
         }
