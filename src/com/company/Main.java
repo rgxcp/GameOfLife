@@ -13,11 +13,13 @@ public class Main {
         for (int row = 0; row < grid.length; row++) {
             for (int column = 0; column < grid.length; column++) {
                 System.out.println(grid[row][column]);
-                boolean cellHasTopLeftNeighbor = true;
+                boolean cellHasTopLeftNeighbor = false;
                 // if current index: row = 0, column = 0
                 // top left neighbor index must be: row = -1, column = -1
-                if (row - 1 <= grid.length && column - 1 <= grid.length) {
-                    cellHasTopLeftNeighbor = false;
+                int topLeftNeighborRow = row - 1;
+                int topLeftNeighborColumn = column - 1;
+                if (topLeftNeighborRow >= 0 && topLeftNeighborColumn >= 0) {
+                    cellHasTopLeftNeighbor = true;
                 }
                 System.out.println("Cell has top left neighbor: " + cellHasTopLeftNeighbor);
             }
