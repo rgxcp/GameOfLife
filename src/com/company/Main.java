@@ -21,45 +21,49 @@ public class Main {
         int rowCount = grid.length - 1;
         int columnCount = grid[0].length - 1;
 
-        for (int row = 0; row <= rowCount; row++) {
-            for (int column = 0; column <= columnCount; column++) {
-                int neighborCount = 0;
-                if (cellHasTopLeftNeighbor(row, column) && neighborCellIsAlive(grid[row - 1][column - 1])) {
-                    neighborCount++;
-                }
-                if (cellHasTopNeighbor(row) && neighborCellIsAlive(grid[row - 1][column])) {
-                    neighborCount++;
-                }
-                if (cellHasTopRightNeighbor(row, column, columnCount) && neighborCellIsAlive(grid[row - 1][column + 1])) {
-                    neighborCount++;
-                }
-                if (cellHasLeftNeighbor(column) && neighborCellIsAlive(grid[row][column - 1])) {
-                    neighborCount++;
-                }
-                if (cellHasRightNeighbor(column, columnCount) && neighborCellIsAlive(grid[row][column + 1])) {
-                    neighborCount++;
-                }
-                if (cellHasBottomLeftNeighbor(row, column, rowCount) && neighborCellIsAlive(grid[row + 1][column - 1])) {
-                    neighborCount++;
-                }
-                if (cellHasBottomNeighbor(row, rowCount) && neighborCellIsAlive(grid[row + 1][column])) {
-                    neighborCount++;
-                }
-                if (cellHasBottomRightNeighbor(row, column, rowCount, columnCount) && neighborCellIsAlive(grid[row + 1][column + 1])) {
-                    neighborCount++;
-                }
+        for (int i = 0; i < 3; i++) {
+            for (int row = 0; row <= rowCount; row++) {
+                for (int column = 0; column <= columnCount; column++) {
+                    int neighborCount = 0;
+                    if (cellHasTopLeftNeighbor(row, column) && neighborCellIsAlive(grid[row - 1][column - 1])) {
+                        neighborCount++;
+                    }
+                    if (cellHasTopNeighbor(row) && neighborCellIsAlive(grid[row - 1][column])) {
+                        neighborCount++;
+                    }
+                    if (cellHasTopRightNeighbor(row, column, columnCount) && neighborCellIsAlive(grid[row - 1][column + 1])) {
+                        neighborCount++;
+                    }
+                    if (cellHasLeftNeighbor(column) && neighborCellIsAlive(grid[row][column - 1])) {
+                        neighborCount++;
+                    }
+                    if (cellHasRightNeighbor(column, columnCount) && neighborCellIsAlive(grid[row][column + 1])) {
+                        neighborCount++;
+                    }
+                    if (cellHasBottomLeftNeighbor(row, column, rowCount) && neighborCellIsAlive(grid[row + 1][column - 1])) {
+                        neighborCount++;
+                    }
+                    if (cellHasBottomNeighbor(row, rowCount) && neighborCellIsAlive(grid[row + 1][column])) {
+                        neighborCount++;
+                    }
+                    if (cellHasBottomRightNeighbor(row, column, rowCount, columnCount) && neighborCellIsAlive(grid[row + 1][column + 1])) {
+                        neighborCount++;
+                    }
 
-                if (neighborCount == 0 || neighborCount == 1 || neighborCount >= 4) {
-                    resultGrid[row][column] = 0;
-                } else if (neighborCount == 3) {
-                    resultGrid[row][column] = 1;
-                } else {
-                    resultGrid[row][column] = grid[row][column];
-                }
+                    if (neighborCount == 0 || neighborCount == 1 || neighborCount >= 4) {
+                        resultGrid[row][column] = 0;
+                    } else if (neighborCount == 3) {
+                        resultGrid[row][column] = 1;
+                    } else {
+                        resultGrid[row][column] = grid[row][column];
+                    }
 
-                System.out.print(resultGrid[row][column] + " ");
+                    System.out.print(resultGrid[row][column] + " ");
+                }
+                System.out.println("");
             }
-            System.out.println();
+            System.out.println("");
+            grid = resultGrid;
         }
     }
 
