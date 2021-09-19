@@ -3,11 +3,11 @@ package com.company;
 public class Main {
     public static void main(String[] args) {
         int[][] grid = {
-            {0, 0, 0, 0, 0},
-            {0, 1, 0, 1, 0},
             {0, 0, 1, 0, 0},
-            {0, 1, 1, 1, 0},
-            {0, 0, 0, 0, 0}
+            {0, 0, 1, 0, 0},
+            {0, 0, 1, 0, 0},
+            {0, 0, 1, 0, 0},
+            {0, 0, 1, 0, 0}
         };
 
         int[][] resultGrid = {
@@ -21,16 +21,17 @@ public class Main {
         int rowCount = grid.length - 1;
         int columnCount = grid[0].length - 1;
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 3; i++) {
             for (int row = 0; row <= rowCount; row++) {
                 for (int column = 0; column <= columnCount; column++) {
+                    System.out.print(grid[row][column]);
                     int neighborCount = countNeighbor(row, column, rowCount, columnCount, grid);
                     resultGrid[row][column] = determineCell(neighborCount, grid[row][column]);
-                    printCell(resultGrid[row][column]);
+//                    printCell(resultGrid[row][column]);
                 }
-                System.out.println("");
+                System.out.println();
             }
-            System.out.println("");
+            System.out.println();
             grid = resultGrid;
         }
     }
