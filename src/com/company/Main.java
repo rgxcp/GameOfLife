@@ -35,12 +35,7 @@ public class Main {
                 boolean cellHasBottomNeighbor = isCellHasBottomNeighbor(row, grid.length);
                 System.out.println("Cell has bottom neighbor: " + cellHasBottomNeighbor);
 
-                boolean cellHasBottomRightNeighbor = false;
-                int cellBottomRightNeighborRow = row + 1;
-                int cellBottomRightNeighborColumn = column + 1;
-                if (!(cellBottomRightNeighborRow >= grid.length) && !(cellBottomRightNeighborColumn >= grid.length)) {
-                    cellHasBottomRightNeighbor = true;
-                }
+                boolean cellHasBottomRightNeighbor = isCellHasBottomRightNeighbor(row, column, grid.length);
                 System.out.println("Cell has bottom right neighbor: " + cellHasBottomRightNeighbor);
             }
             System.out.println();
@@ -83,5 +78,11 @@ public class Main {
     public static boolean isCellHasBottomNeighbor(int row, int size) {
         int cellBottomNeighborRow = row + 1;
         return !(cellBottomNeighborRow >= size);
+    }
+
+    public static boolean isCellHasBottomRightNeighbor(int row, int column, int size) {
+        int cellBottomRightNeighborRow = row + 1;
+        int cellBottomRightNeighborColumn = column + 1;
+        return !(cellBottomRightNeighborRow >= size) && !(cellBottomRightNeighborColumn >= size);
     }
 }
