@@ -10,11 +10,19 @@ public class Main {
             {0, 0, 0, 0, 0}
         };
 
+        int[][] resultGrid = {
+            {0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0},
+            {0, 0, 0, 0, 0}
+        };
+
         int rowCount = grid.length - 1;
         int columnCount = grid[0].length - 1;
 
-        for (int row = 0; row < grid.length; row++) {
-            for (int column = 0; column < grid.length; column++) {
+        for (int row = 0; row <= rowCount; row++) {
+            for (int column = 0; column <= columnCount; column++) {
                 int neighborCount = 0;
                 if (cellHasTopLeftNeighbor(row, column) && neighborCellIsAlive(grid[row - 1][column - 1])) {
                     neighborCount++;
@@ -41,19 +49,15 @@ public class Main {
                     neighborCount++;
                 }
 
-//                if (neighborCount == 0 || neighborCount == 1) {
-//                    // grid[row][column] = 0;
-//                }
-//
-//                if (neighborCount >= 4) {
-//                    // grid[row][column] = 0;
-//                }
-
-                if (neighborCount == 3) {
-                    grid[row][column] = 1;
+                if (neighborCount == 0 || neighborCount == 1 || neighborCount >= 4) {
+                    resultGrid[row][column] = 0;
+                } else if (neighborCount == 3) {
+                    resultGrid[row][column] = 1;
+                } else {
+                    resultGrid[row][column] = grid[row][column];
                 }
 
-                System.out.print(grid[row][column] + " ");
+                System.out.print(resultGrid[row][column] + " ");
             }
             System.out.println();
         }
