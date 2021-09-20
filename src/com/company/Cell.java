@@ -19,47 +19,61 @@ public class Cell {
     }
 
     // Class Methods
-    public static boolean cellHasTopLeftNeighbor(int row, int column) {
+    public static boolean hasTopLeftNeighbor(int row, int column) {
         int neighborRow = row - 1;
         int neighborColumn = column - 1;
         return neighborRow >= 0 && neighborColumn >= 0;
     }
 
-    public static boolean cellHasTopNeighbor(int row) {
+    public static boolean hasTopNeighbor(int row) {
         int neighborRow = row - 1;
         return neighborRow >= 0;
     }
 
-    public static boolean cellHasTopRightNeighbor(int row, int column, int columnCount) {
+    public static boolean hasTopRightNeighbor(int row, int column, int columnCount) {
         int neighborRow = row - 1;
         int neighborColumn = column + 1;
         return neighborRow >= 0 && neighborColumn <= columnCount;
     }
 
-    public static boolean cellHasLeftNeighbor(int column) {
+    public static boolean hasLeftNeighbor(int column) {
         int neighborColumn = column - 1;
         return neighborColumn >= 0;
     }
 
-    public static boolean cellHasRightNeighbor(int column, int columnCount) {
+    public static boolean hasRightNeighbor(int column, int columnCount) {
         int neighborColumn = column + 1;
         return neighborColumn <= columnCount;
     }
 
-    public static boolean cellHasBottomLeftNeighbor(int row, int column, int rowCount) {
+    public static boolean hasBottomLeftNeighbor(int row, int column, int rowCount) {
         int neighborRow = row + 1;
         int neighborColumn = column - 1;
         return neighborRow <= rowCount && neighborColumn >= 0;
     }
 
-    public static boolean cellHasBottomNeighbor(int row, int rowCount) {
+    public static boolean hasBottomNeighbor(int row, int rowCount) {
         int neighborRow = row + 1;
         return neighborRow <= rowCount;
     }
 
-    public static boolean cellHasBottomRightNeighbor(int row, int column, int rowCount, int columnCount) {
+    public static boolean hasBottomRightNeighbor(int row, int column, int rowCount, int columnCount) {
         int neighborRow = row + 1;
         int neighborColumn = column + 1;
         return neighborRow <= rowCount && neighborColumn <= columnCount;
+    }
+
+    public static boolean isAlive(int cellNumber) {
+        return cellNumber == 1;
+    }
+
+    public static int determineCell(int neighborCount, int defaultCellNumber) {
+        if (neighborCount == 0 || neighborCount == 1 || neighborCount >= 4) {
+            return 0;
+        } else if (neighborCount == 3) {
+            return 1;
+        } else {
+            return defaultCellNumber;
+        }
     }
 }
