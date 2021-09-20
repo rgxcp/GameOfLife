@@ -6,9 +6,18 @@ public class Grid {
     // Class Variable (Member)
     int[][] mGrid;
 
-    // Constructor
+    // Setter
     public void setGrid(int[][] grid) {
         mGrid = grid;
+    }
+
+    // Methods
+    public int getRowCount() {
+        return mGrid.length - 1;
+    }
+
+    public int getColumnCount() {
+        return mGrid[0].length - 1;
     }
 
     public void setInitialShape() {
@@ -27,22 +36,14 @@ public class Grid {
 
     public void printGrid() throws InterruptedException {
         for (int[] rows : mGrid) {
-            for (int columns : rows) {
-                Cell cell = new Cell(columns);
+            for (int cellNumber : rows) {
+                Cell cell = new Cell(cellNumber);
                 cell.printCell();
             }
             System.out.println();
         }
         System.out.println();
         TimeUnit.SECONDS.sleep(1);
-    }
-
-    public int getRowCount() {
-        return mGrid.length - 1;
-    }
-
-    public int getColumnCount() {
-        return mGrid[0].length - 1;
     }
 
     public boolean containLivingCell() {

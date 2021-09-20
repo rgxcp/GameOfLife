@@ -1,18 +1,17 @@
 package com.company;
 
 public class Cell {
-    int cell;
+    // Class Variable (Member)
+    int mCell;
 
+    // Constructor
     public Cell(int cell) {
-        this.cell = cell;
+        mCell = cell;
     }
 
-    public void setCell(int cell) {
-        this.cell = cell;
-    }
-
+    // Methods
     public void printCell() {
-        if (cell == 0) {
+        if (mCell == 0) {
             System.out.print("▒ ");
         } else {
             System.out.print("▓ ");
