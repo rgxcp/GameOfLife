@@ -4,19 +4,12 @@ import java.util.concurrent.TimeUnit;
 
 public class Main {
     public static void main(String[] args) throws InterruptedException {
-        int[][] initialGrid = {
-            {0, 0, 1, 0, 0},
-            {0, 0, 1, 0, 0},
-            {0, 0, 1, 0, 0},
-            {0, 0, 1, 0, 0},
-            {0, 0, 1, 0, 0}
-        };
-
-        Grid grid = new Grid(initialGrid);
+        Grid grid = new Grid();
+        grid.setInitialGrid();
         grid.printGrid();
 
         while (grid.containLivingCell()) {
-            int[][] resultGrid = {
+            int[][] result = {
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0},
                 {0, 0, 0, 0, 0},
@@ -27,13 +20,13 @@ public class Main {
             for (int row = 0; row <= grid.getRowCount(); row++) {
                 for (int column = 0; column <= grid.getColumnCount(); column++) {
                     int neighborCount = countNeighbor(row, column, grid.getRowCount(), grid.getColumnCount(), grid.getGrid());
-                    resultGrid[row][column] = determineCell(neighborCount, grid.getGrid()[row][column]);
-                    grid.printCell(resultGrid[row][column]);
+                    result[row][column] = determineCell(neighborCount, grid.getGrid()[row][column]);
+                    grid.printCell(result[row][column]);
                 }
                 System.out.println();
             }
             System.out.println();
-            grid.setGrid(resultGrid);
+            grid.setGrid(result);
 
             TimeUnit.SECONDS.sleep(1);
         }

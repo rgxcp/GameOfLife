@@ -5,16 +5,22 @@ import java.util.concurrent.TimeUnit;
 public class Grid {
     int[][] grid;
 
-    public Grid(int[][] grid) {
-        this.grid = grid;
-    }
-
     public int[][] getGrid() {
         return grid;
     }
 
     public void setGrid(int[][] grid) {
         this.grid = grid;
+    }
+
+    public void setInitialGrid() {
+        this.grid = new int[][]{
+            {0, 0, 1, 0, 0},
+            {0, 0, 1, 0, 0},
+            {0, 0, 1, 0, 0},
+            {0, 0, 1, 0, 0},
+            {0, 0, 1, 0, 0}
+        };
     }
 
     public void printCell(int cell) {
