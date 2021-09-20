@@ -3,7 +3,7 @@ package com.company;
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         Grid grid = new Grid();
-        grid.setInitialGrid();
+        grid.setInitialShape();
         grid.printGrid();
 
         while (grid.containLivingCell()) {

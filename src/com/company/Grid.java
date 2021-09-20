@@ -3,18 +3,16 @@ package com.company;
 import java.util.concurrent.TimeUnit;
 
 public class Grid {
-    int[][] grid;
+    // Class Variable (Member)
+    int[][] mGrid;
 
-    public int[][] getGrid() {
-        return grid;
-    }
-
+    // Constructor
     public void setGrid(int[][] grid) {
-        this.grid = grid;
+        mGrid = grid;
     }
 
-    public void setInitialGrid() {
-        this.grid = new int[][]{
+    public void setInitialShape() {
+        mGrid = new int[][]{
             {0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 0, 0, 0, 0, 0},
             {0, 0, 0, 0, 1, 0, 0, 0, 0},
@@ -27,18 +25,11 @@ public class Grid {
         };
     }
 
-    public void printCell(int cell) {
-        if (cell == 0) {
-            System.out.print("▒ ");
-        } else {
-            System.out.print("▓ ");
-        }
-    }
-
     public void printGrid() throws InterruptedException {
-        for (int[] rows : grid) {
+        for (int[] rows : mGrid) {
             for (int columns : rows) {
-                printCell(columns);
+                Cell cell = new Cell(columns);
+                cell.printCell();
             }
             System.out.println();
         }
@@ -47,16 +38,16 @@ public class Grid {
     }
 
     public int getRowCount() {
-        return grid.length - 1;
+        return mGrid.length - 1;
     }
 
     public int getColumnCount() {
-        return grid[0].length - 1;
+        return mGrid[0].length - 1;
     }
 
     public boolean containLivingCell() {
         boolean contain = false;
-        for (int[] rows : grid) {
+        for (int[] rows : mGrid) {
             if (contain) {
                 break;
             }
@@ -86,8 +77,8 @@ public class Grid {
 
         for (int row = 0; row <= getRowCount(); row++) {
             for (int column = 0; column <= getColumnCount(); column++) {
-                int neighborCount = countNeighbor(row, column, getRowCount(), getColumnCount(), grid);
-                nextShape[row][column] = determineCell(neighborCount, grid[row][column]);
+                int neighborCount = countNeighbor(row, column, getRowCount(), getColumnCount(), mGrid);
+                nextShape[row][column] = determineCell(neighborCount, mGrid[row][column]);
             }
             System.out.println();
         }
@@ -144,31 +135,31 @@ public class Grid {
         return cell == 1;
     }
 
-    public static int countNeighbor(int row, int column, int rowCount, int columnCount, int[][] grid) {
+    public static int countNeighbor(int row, int column, int rowCount, int columnCount, int[][] mGrid) {
         int count = 0;
 
-        if (cellHasTopLeftNeighbor(row, column) && neighborCellIsAlive(grid[row - 1][column - 1])) {
+        if (cellHasTopLeftNeighbor(row, column) && neighborCellIsAlive(mGrid[row - 1][column - 1])) {
             count++;
         }
-        if (cellHasTopNeighbor(row) && neighborCellIsAlive(grid[row - 1][column])) {
+        if (cellHasTopNeighbor(row) && neighborCellIsAlive(mGrid[row - 1][column])) {
             count++;
         }
-        if (cellHasTopRightNeighbor(row, column, columnCount) && neighborCellIsAlive(grid[row - 1][column + 1])) {
+        if (cellHasTopRightNeighbor(row, column, columnCount) && neighborCellIsAlive(mGrid[row - 1][column + 1])) {
             count++;
         }
-        if (cellHasLeftNeighbor(column) && neighborCellIsAlive(grid[row][column - 1])) {
+        if (cellHasLeftNeighbor(column) && neighborCellIsAlive(mGrid[row][column - 1])) {
             count++;
         }
-        if (cellHasRightNeighbor(column, columnCount) && neighborCellIsAlive(grid[row][column + 1])) {
+        if (cellHasRightNeighbor(column, columnCount) && neighborCellIsAlive(mGrid[row][column + 1])) {
             count++;
         }
-        if (cellHasBottomLeftNeighbor(row, column, rowCount) && neighborCellIsAlive(grid[row + 1][column - 1])) {
+        if (cellHasBottomLeftNeighbor(row, column, rowCount) && neighborCellIsAlive(mGrid[row + 1][column - 1])) {
             count++;
         }
-        if (cellHasBottomNeighbor(row, rowCount) && neighborCellIsAlive(grid[row + 1][column])) {
+        if (cellHasBottomNeighbor(row, rowCount) && neighborCellIsAlive(mGrid[row + 1][column])) {
             count++;
         }
-        if (cellHasBottomRightNeighbor(row, column, rowCount, columnCount) && neighborCellIsAlive(grid[row + 1][column + 1])) {
+        if (cellHasBottomRightNeighbor(row, column, rowCount, columnCount) && neighborCellIsAlive(mGrid[row + 1][column + 1])) {
             count++;
         }
 
